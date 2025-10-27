@@ -17,5 +17,23 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <script>
+      // Force redirect to handle client-side routing
+      if (window.location.pathname === '/Ohleo/' || window.location.pathname === '/Ohleo') {
+        // Try to push to a common route
+        window.history.replaceState(null, null, '/Ohleo/');
+      }
+      
+      // If still on 404 after 2 seconds, try common routes
+      setTimeout(() => {
+        if (document.body.innerHTML.includes('404') || document.body.innerHTML.includes('Page Not Found')) {
+          const routes = ['/home', '/app', '/dashboard', '/main', '/'];
+          routes.forEach(route => {
+            window.history.replaceState(null, null, '/Ohleo' + route);
+          });
+        }
+      }, 2000);
+    </script>
   </body>
 </html>
