@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>LeoCyte - Shaping Pharma Success, Worldwide | Global Pharmaceutical Consulting</title>
-    <meta name="description" content="LeoCyte provides expert pharmaceutical consulting services with 25+ years of global experience. Specializing in regulatory consultation, market access, and commercialization strategy for injectable and critical care products across India, Colombia, Brazil, Portugal, and Mexico." />
-    <meta property="og:title" content="LeoCyte - Global Pharmaceutical Consulting Excellence" />
+    <title>Leocyte - Shaping Pharma Success, Worldwide | Global Pharmaceutical Consulting</title>
+    <meta name="description" content="Leocyte provides expert pharmaceutical consulting services with 25+ years of global experience. Specializing in regulatory consultation, market access, and commercialization strategy for injectable and critical care products across India, Colombia, Brazil, Portugal, and Mexico." />
+    <meta property="og:title" content="Leocyte - Global Pharmaceutical Consulting Excellence" />
     <meta property="og:description" content="Transforming pharmaceutical businesses worldwide with expert regulatory guidance, market access solutions, and strategic commercialization support." />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/png" href="./favicon.png" />
@@ -17,5 +17,16 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Add this script right before closing body tag -->
+    <script>
+    // Load LGPD banner
+    fetch('lgpd-banner.html')
+      .then(response => response.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('beforeend', data);
+      })
+      .catch(error => console.log('Error loading LGPD banner:', error));
+    </script>
   </body>
 </html>
