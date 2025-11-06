@@ -14,183 +14,460 @@
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Oxanium:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="./assets/index-D5Q03MHk.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DHbnCEw9.css">
+    <style>
+      /* Modern LGPD Banner Styles */
+      .lgpd-banner {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #1a3c34 0%, #2c5530 100%);
+        color: white;
+        padding: 25px;
+        z-index: 1000;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        max-width: 90%;
+        width: 500px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .lgpd-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .lgpd-text {
+        margin: 0 0 20px 0;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #e0e0e0;
+      }
+
+      .lgpd-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .lgpd-btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .lgpd-btn.accept {
+        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        color: white;
+      }
+
+      .lgpd-btn.settings {
+        background: rgba(255,255,255,0.1);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+      }
+
+      .lgpd-btn.reject {
+        background: rgba(255,255,255,0.05);
+        color: #ff6b6b;
+        border: 1px solid rgba(255,107,107,0.3);
+      }
+
+      .lgpd-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+
+      .lgpd-link {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .lgpd-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Modern Modal Styles */
+      .lgpd-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        z-index: 1001;
+        max-width: 500px;
+        width: 90%;
+        font-family: 'Inter', sans-serif;
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -60%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .modal-title {
+        color: #1a3c34;
+        margin-bottom: 25px;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .cookie-option {
+        display: block;
+        margin: 15px 0;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+
+      .cookie-option:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+      }
+
+      .cookie-option input {
+        margin-right: 12px;
+        transform: scale(1.1);
+      }
+
+      .cookie-label {
+        font-weight: 600;
+        color: #1a3c34;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .cookie-desc {
+        font-size: 12px;
+        color: #666;
+        margin-left: 24px;
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 25px;
+      }
+
+      .modal-btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .modal-btn.primary {
+        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        color: white;
+      }
+
+      .modal-btn.secondary {
+        background: #6c757d;
+        color: white;
+      }
+
+      .modal-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+
+      /* Overlay */
+      .lgpd-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+      }
+
+      /* Stats Counter Animation */
+      .stat-counter {
+        font-size: 3em;
+        font-weight: 800;
+        background: linear-gradient(135deg, #1a3c34 0%, #4CAF50 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+        margin: 10px 0;
+      }
+
+      .stat-container {
+        text-align: center;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .stat-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stat-label {
+        color: #666;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
 
-    <!-- LGPD Cookie Consent Banner -->
-    <div id="lgpd-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #1a3c34; color: white; padding: 20px; z-index: 1000; text-align: center; font-family: 'Inter', sans-serif;">
-      <div style="max-width: 800px; margin: 0 auto;">
-        <p style="margin: 0 0 15px 0; font-size: 14px; line-height: 1.5;">Este site usa cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="#" onclick="showPrivacyPolicy()" style="color: #4CAF50; text-decoration: underline;">Política de Privacidade</a>.</p>
-        <button onclick="acceptAllCookies()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 5px; font-size: 14px;">Aceitar Todos</button>
-        <button onclick="showCookieSettings()" style="background: #666; color: white; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 5px; font-size: 14px;">Configurações</button>
-        <button onclick="rejectAllCookies()" style="background: #f44336; color: white; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 5px; font-size: 14px;">Rejeitar Todos</button>
+    <!-- Modern LGPD Cookie Consent Banner -->
+    <div id="lgpd-banner" class="lgpd-banner">
+      <div class="lgpd-content">
+        <p class="lgpd-text">
+          🍪 Usamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa 
+          <a href="#" onclick="showPrivacyPolicy()" class="lgpd-link">Política de Privacidade</a>.
+        </p>
+        <div class="lgpd-buttons">
+          <button onclick="acceptAllCookies()" class="lgpd-btn accept">Aceitar Todos</button>
+          <button onclick="showCookieSettings()" class="lgpd-btn settings">Personalizar</button>
+          <button onclick="rejectAllCookies()" class="lgpd-btn reject">Recusar</button>
+        </div>
       </div>
     </div>
 
-    <!-- Cookie Settings Modal -->
-    <div id="cookie-settings" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.3); z-index: 1001; max-width: 500px; width: 90%; font-family: 'Inter', sans-serif;">
-      <h3 style="color: #2c5530; margin-bottom: 20px;">Configurações de Cookies</h3>
-      <div style="text-align: left; margin: 20px 0;">
-        <label style="display: block; margin: 15px 0; padding: 10px; background: #f8f9fa; border-radius: 5px;">
-          <input type="checkbox" id="necessary-cookies" checked disabled style="margin-right: 10px;"> 
-          <strong>Cookies Necessários</strong> (obrigatórios)
-          <p style="margin: 5px 0 0 25px; font-size: 12px; color: #666;">Funcionalidade básica do site</p>
+    <!-- Modern Cookie Settings Modal -->
+    <div id="cookie-settings" class="lgpd-modal">
+      <h3 class="modal-title">Preferências de Cookies</h3>
+      <div>
+        <label class="cookie-option">
+          <input type="checkbox" id="necessary-cookies" checked disabled>
+          <span class="cookie-label">Cookies Essenciais</span>
+          <span class="cookie-desc">Necessários para o funcionamento básico do site</span>
         </label>
-        <label style="display: block; margin: 15px 0; padding: 10px; background: #f8f9fa; border-radius: 5px;">
-          <input type="checkbox" id="analytics-cookies" style="margin-right: 10px;"> 
-          <strong>Cookies Analíticos</strong>
-          <p style="margin: 5px 0 0 25px; font-size: 12px; color: #666;">Análise de tráfego e uso do site</p>
+        <label class="cookie-option">
+          <input type="checkbox" id="analytics-cookies">
+          <span class="cookie-label">Cookies Analíticos</span>
+          <span class="cookie-desc">Nos ajudam a entender como você usa nosso site</span>
         </label>
-        <label style="display: block; margin: 15px 0; padding: 10px; background: #f8f9fa; border-radius: 5px;">
-          <input type="checkbox" id="marketing-cookies" style="margin-right: 10px;"> 
-          <strong>Cookies de Marketing</strong>
-          <p style="margin: 5px 0 0 25px; font-size: 12px; color: #666;">Personalização de conteúdo</p>
+        <label class="cookie-option">
+          <input type="checkbox" id="marketing-cookies">
+          <span class="cookie-label">Cookies de Marketing</span>
+          <span class="cookie-desc">Personalizam sua experiência e conteúdo</span>
         </label>
       </div>
-      <button onclick="saveCookieSettings()" style="background: #4CAF50; color: white; border: none; padding: 12px 25px; margin: 5px; cursor: pointer; border-radius: 5px; font-size: 14px;">Salvar Preferências</button>
-      <button onclick="closeCookieSettings()" style="background: #666; color: white; border: none; padding: 12px 25px; margin: 5px; cursor: pointer; border-radius: 5px; font-size: 14px;">Fechar</button>
+      <div class="modal-buttons">
+        <button onclick="saveCookieSettings()" class="modal-btn primary">Salvar Preferências</button>
+        <button onclick="closeCookieSettings()" class="modal-btn secondary">Fechar</button>
+      </div>
     </div>
 
-    <!-- Privacy Policy Modal -->
-    <div id="privacy-policy" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.3); z-index: 1001; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; font-family: 'Inter', sans-serif;">
-      <h3 style="color: #2c5530; margin-bottom: 20px;">Política de Privacidade - LGPD</h3>
-      <div style="text-align: left;">
-        <h4 style="color: #2c5530;">1. Coleta de Dados</h4>
-        <p>Coletamos apenas dados necessários para o funcionamento do site e melhorar sua experiência.</p>
+    <!-- Modern Privacy Policy Modal -->
+    <div id="privacy-policy" class="lgpd-modal" style="max-width: 600px;">
+      <h3 class="modal-title">Política de Privacidade - LGPD</h3>
+      <div style="text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">1. Coleta de Dados</h4>
+        <p style="margin-bottom: 15px; line-height: 1.6;">Coletamos apenas dados necessários para o funcionamento do site e melhorar sua experiência, sempre em conformidade com a Lei Geral de Proteção de Dados.</p>
         
-        <h4 style="color: #2c5530;">2. Uso de Cookies</h4>
-        <p>Utilizamos cookies para:</p>
-        <ul>
-          <li>Funcionalidade básica do site (necessários)</li>
-          <li>Análise de tráfego (analíticos)</li>
-          <li>Personalização de conteúdo (marketing)</li>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">2. Uso de Cookies</h4>
+        <p style="margin-bottom: 10px;">Utilizamos cookies para:</p>
+        <ul style="margin-bottom: 15px; padding-left: 20px;">
+          <li style="margin-bottom: 5px;">Funcionalidade básica do site (necessários)</li>
+          <li style="margin-bottom: 5px;">Análise de tráfego (analíticos)</li>
+          <li style="margin-bottom: 5px;">Personalização de conteúdo (marketing)</li>
         </ul>
         
-        <h4 style="color: #2c5530;">3. Seus Direitos</h4>
-        <p>Você tem o direito de:</p>
-        <ul>
-          <li>Acessar seus dados pessoais</li>
-          <li>Corrigir dados incorretos</li>
-          <li>Excluir seus dados</li>
-          <li>Revogar consentimento</li>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">3. Seus Direitos</h4>
+        <p style="margin-bottom: 10px;">Você tem o direito de:</p>
+        <ul style="margin-bottom: 15px; padding-left: 20px;">
+          <li style="margin-bottom: 5px;">Acessar seus dados pessoais</li>
+          <li style="margin-bottom: 5px;">Corrigir dados incorretos</li>
+          <li style="margin-bottom: 5px;">Excluir seus dados</li>
+          <li style="margin-bottom: 5px;">Revogar consentimento</li>
         </ul>
         
-        <h4 style="color: #2c5530;">4. Contato</h4>
-        <p>Para exercer seus direitos, entre em contato: <a href="mailto:privacy@leocyte.com">privacy@leocyte.com</a></p>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">4. Contato</h4>
+        <p>Para exercer seus direitos, entre em contato: <a href="mailto:privacy@leocyte.com" style="color: #4CAF50;">privacy@leocyte.com</a></p>
       </div>
-      <button onclick="closePrivacyPolicy()" style="background: #666; color: white; border: none; padding: 12px 25px; margin: 10px 0; cursor: pointer; border-radius: 5px; font-size: 14px;">Fechar</button>
+      <div class="modal-buttons">
+        <button onclick="closePrivacyPolicy()" class="modal-btn secondary">Fechar</button>
+      </div>
     </div>
 
     <!-- Overlay for modals -->
-    <div id="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000;"></div>
+    <div id="modal-overlay" class="lgpd-overlay"></div>
 
     <script>
-    // Cookie functions
-    function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-
-    function setCookie(name, value, days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
-    }
-
-    function showLGPDBanner() {
-      if (!getCookie('lgpd_consent')) {
-        document.getElementById('lgpd-banner').style.display = 'block';
+      // Cookie functions
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
       }
-    }
 
-    function acceptAllCookies() {
-      setCookie('lgpd_consent', 'all', 365);
-      setCookie('necessary_cookies', 'true', 365);
-      setCookie('analytics_cookies', 'true', 365);
-      setCookie('marketing_cookies', 'true', 365);
-      document.getElementById('lgpd-banner').style.display = 'none';
-      initializeCookies();
-    }
-
-    function rejectAllCookies() {
-      setCookie('lgpd_consent', 'necessary', 365);
-      setCookie('necessary_cookies', 'true', 365);
-      setCookie('analytics_cookies', 'false', 365);
-      setCookie('marketing_cookies', 'false', 365);
-      document.getElementById('lgpd-banner').style.display = 'none';
-      initializeCookies();
-    }
-
-    function showCookieSettings() {
-      document.getElementById('cookie-settings').style.display = 'block';
-      document.getElementById('modal-overlay').style.display = 'block';
-      
-      // Load current settings
-      document.getElementById('analytics-cookies').checked = getCookie('analytics_cookies') === 'true';
-      document.getElementById('marketing-cookies').checked = getCookie('marketing_cookies') === 'true';
-    }
-
-    function closeCookieSettings() {
-      document.getElementById('cookie-settings').style.display = 'none';
-      document.getElementById('modal-overlay').style.display = 'none';
-    }
-
-    function saveCookieSettings() {
-      const analytics = document.getElementById('analytics-cookies').checked;
-      const marketing = document.getElementById('marketing-cookies').checked;
-      
-      setCookie('lgpd_consent', 'custom', 365);
-      setCookie('necessary_cookies', 'true', 365);
-      setCookie('analytics_cookies', analytics.toString(), 365);
-      setCookie('marketing_cookies', marketing.toString(), 365);
-      
-      document.getElementById('cookie-settings').style.display = 'none';
-      document.getElementById('modal-overlay').style.display = 'none';
-      document.getElementById('lgpd-banner').style.display = 'none';
-      
-      initializeCookies();
-    }
-
-    function showPrivacyPolicy() {
-      document.getElementById('privacy-policy').style.display = 'block';
-      document.getElementById('modal-overlay').style.display = 'block';
-    }
-
-    function closePrivacyPolicy() {
-      document.getElementById('privacy-policy').style.display = 'none';
-      document.getElementById('modal-overlay').style.display = 'none';
-    }
-
-    function initializeCookies() {
-      const analytics = getCookie('analytics_cookies') === 'true';
-      const marketing = getCookie('marketing_cookies') === 'true';
-      
-      // Initialize analytics cookies if accepted
-      if (analytics) {
-        // Add your analytics code here (Google Analytics, etc.)
-        console.log('Analytics cookies initialized');
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
       }
-      
-      // Initialize marketing cookies if accepted
-      if (marketing) {
-        // Add your marketing cookies here
-        console.log('Marketing cookies initialized');
+
+      function showLGPDBanner() {
+        if (!getCookie('lgpd_consent')) {
+          document.getElementById('lgpd-banner').style.display = 'block';
+        }
       }
-    }
 
-    // Show banner on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      showLGPDBanner();
-      initializeCookies();
-    });
+      function acceptAllCookies() {
+        setCookie('lgpd_consent', 'all', 365);
+        setCookie('necessary_cookies', 'true', 365);
+        setCookie('analytics_cookies', 'true', 365);
+        setCookie('marketing_cookies', 'true', 365);
+        document.getElementById('lgpd-banner').style.display = 'none';
+        initializeCookies();
+      }
 
-    // Close modals when clicking overlay
-    document.getElementById('modal-overlay').addEventListener('click', function() {
-      closeCookieSettings();
-      closePrivacyPolicy();
-    });
+      function rejectAllCookies() {
+        setCookie('lgpd_consent', 'necessary', 365);
+        setCookie('necessary_cookies', 'true', 365);
+        setCookie('analytics_cookies', 'false', 365);
+        setCookie('marketing_cookies', 'false', 365);
+        document.getElementById('lgpd-banner').style.display = 'none';
+        initializeCookies();
+      }
+
+      function showCookieSettings() {
+        document.getElementById('cookie-settings').style.display = 'block';
+        document.getElementById('modal-overlay').style.display = 'block';
+        
+        // Load current settings
+        document.getElementById('analytics-cookies').checked = getCookie('analytics_cookies') === 'true';
+        document.getElementById('marketing-cookies').checked = getCookie('marketing_cookies') === 'true';
+      }
+
+      function closeCookieSettings() {
+        document.getElementById('cookie-settings').style.display = 'none';
+        document.getElementById('modal-overlay').style.display = 'none';
+      }
+
+      function saveCookieSettings() {
+        const analytics = document.getElementById('analytics-cookies').checked;
+        const marketing = document.getElementById('marketing-cookies').checked;
+        
+        setCookie('lgpd_consent', 'custom', 365);
+        setCookie('necessary_cookies', 'true', 365);
+        setCookie('analytics_cookies', analytics.toString(), 365);
+        setCookie('marketing_cookies', marketing.toString(), 365);
+        
+        document.getElementById('cookie-settings').style.display = 'none';
+        document.getElementById('modal-overlay').style.display = 'none';
+        document.getElementById('lgpd-banner').style.display = 'none';
+        
+        initializeCookies();
+      }
+
+      function showPrivacyPolicy() {
+        document.getElementById('privacy-policy').style.display = 'block';
+        document.getElementById('modal-overlay').style.display = 'block';
+      }
+
+      function closePrivacyPolicy() {
+        document.getElementById('privacy-policy').style.display = 'none';
+        document.getElementById('modal-overlay').style.display = 'none';
+      }
+
+      function initializeCookies() {
+        const analytics = getCookie('analytics_cookies') === 'true';
+        const marketing = getCookie('marketing_cookies') === 'true';
+        
+        if (analytics) {
+          console.log('Analytics cookies initialized');
+        }
+        
+        if (marketing) {
+          console.log('Marketing cookies initialized');
+        }
+      }
+
+      // Stats Counter Animation
+      function animateCounter(element, target, duration = 2000) {
+        let current = 0;
+        const increment = target / (duration / 16);
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          element.textContent = Math.floor(current).toLocaleString();
+        }, 16);
+      }
+
+      function initializeStats() {
+        const stats = document.querySelectorAll('.stat-counter');
+        stats.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          if (target && !stat.hasAttribute('data-animated')) {
+            stat.setAttribute('data-animated', 'true');
+            animateCounter(stat, target);
+          }
+        });
+      }
+
+      // Show banner on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        showLGPDBanner();
+        initializeCookies();
+        
+        // Initialize stats when they become visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              initializeStats();
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        // Observe all stat containers
+        document.querySelectorAll('.stat-container').forEach(container => {
+          observer.observe(container);
+        });
+      });
+
+      // Close modals when clicking overlay
+      document.getElementById('modal-overlay').addEventListener('click', function() {
+        closeCookieSettings();
+        closePrivacyPolicy();
+      });
     </script>
   </body>
 </html>
