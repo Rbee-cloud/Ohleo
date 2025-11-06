@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Oxanium:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="./assets/index-D5Q03MHk.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DHbnCEw9.css">
     <style>
@@ -213,17 +213,19 @@
         z-index: 1000;
       }
 
-      /* Improved Stats Counter Animation */
+      /* IMPROVED Stats Counter Animation - NOT GREEN */
       .stat-counter {
         font-size: 1.8em;
         font-weight: 700;
-        color: #2c5530;
+        color: #2c5aa0; /* Changed to blue instead of green */
         display: inline-block;
         margin: 5px 0;
         font-family: 'Inter', sans-serif;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        background: none;
-        -webkit-text-fill-color: #2c5530;
+        background: linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .stat-container {
@@ -232,7 +234,7 @@
         opacity: 0;
         transform: translateY(20px);
         transition: all 0.6s ease;
-        background: rgba(255,255,255,0.8);
+        background: rgba(255,255,255,0.9);
         border-radius: 12px;
         margin: 10px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -253,7 +255,7 @@
         margin-top: 5px;
       }
 
-      /* Floating containers */
+      /* Enhanced Floating containers for React content */
       .floating-container {
         float: left;
         margin: 15px;
@@ -289,6 +291,11 @@
         object-fit: cover;
         border-radius: 10px;
         margin-bottom: 15px;
+      }
+
+      /* Auto-apply floating to React containers */
+      #root * {
+        transition: all 0.3s ease;
       }
     </style>
   </head>
@@ -372,10 +379,20 @@
     <div id="modal-overlay" class="lgpd-overlay"></div>
 
     <script>
-      // Fix Leocyte spelling throughout the page
+      // IMPROVED Leocyte spelling fix
       function fixLeocyteSpelling() {
-        // Replace Leocytte with Leocyte in all text content
-        document.body.innerHTML = document.body.innerHTML.replace(/Leocytte/gi, 'Leocyte');
+        // Fix title
+        if (document.title.includes('Leocytte')) {
+          document.title = document.title.replace(/Leocytte/gi, 'Leocyte');
+        }
+        
+        // Fix meta tags
+        const metaTags = document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"]');
+        metaTags.forEach(meta => {
+          if (meta.content.includes('Leocytte')) {
+            meta.content = meta.content.replace(/Leocytte/gi, 'Leocyte');
+          }
+        });
       }
 
       // Cookie functions
@@ -419,7 +436,6 @@
         document.getElementById('cookie-settings').style.display = 'block';
         document.getElementById('modal-overlay').style.display = 'block';
         
-        // Load current settings
         document.getElementById('analytics-cookies').checked = getCookie('analytics_cookies') === 'true';
         document.getElementById('marketing-cookies').checked = getCookie('marketing_cookies') === 'true';
       }
@@ -459,13 +475,8 @@
         const analytics = getCookie('analytics_cookies') === 'true';
         const marketing = getCookie('marketing_cookies') === 'true';
         
-        if (analytics) {
-          console.log('Analytics cookies initialized');
-        }
-        
-        if (marketing) {
-          console.log('Marketing cookies initialized');
-        }
+        if (analytics) console.log('Analytics cookies initialized');
+        if (marketing) console.log('Marketing cookies initialized');
       }
 
       // Stats Counter Animation
@@ -484,14 +495,6 @@
 
       // Auto-detect and convert numbers to animated counters
       function convertNumbersToCounters() {
-        // Common patterns for numbers in text
-        const numberPatterns = [
-          /\b\d+\+?\b/g, // Regular numbers like 25, 100+
-          /\$\d+(?:,\d{3})*/g, // Currency like $50,000
-          /\b\d+(?:\.\d+)?%/g // Percentages like 95%
-        ];
-
-        // Walk through all text nodes in the document
         const walker = document.createTreeWalker(
           document.body,
           NodeFilter.SHOW_TEXT,
@@ -503,31 +506,29 @@
         const nodesToProcess = [];
 
         while (node = walker.nextNode()) {
-          if (node.textContent.trim().length > 0) {
+          if (node.textContent.trim().length > 0 && node.parentNode.nodeName !== 'SCRIPT') {
             nodesToProcess.push(node);
           }
         }
 
         nodesToProcess.forEach(node => {
           let text = node.textContent;
+          const numberRegex = /\b(\d+)\b/g;
           let hasNumbers = false;
 
-          numberPatterns.forEach(pattern => {
-            text = text.replace(pattern, match => {
+          text = text.replace(numberRegex, (match, number) => {
+            const numericValue = parseInt(number);
+            if (!isNaN(numericValue) && numericValue > 9) { // Only animate numbers > 9
               hasNumbers = true;
-              // Extract the numeric value
-              const numericValue = parseFloat(match.replace(/[^0-9.]/g, ''));
-              if (!isNaN(numericValue) && numericValue > 0) {
-                return `<span class="stat-counter" data-target="${numericValue}">0</span>${match.replace(numericValue.toString(), '')}`;
-              }
-              return match;
-            });
+              return `<span class="stat-counter" data-target="${numericValue}">0</span>`;
+            }
+            return match;
           });
 
           if (hasNumbers) {
-            const tempDiv = document.createElement('div');
+            const tempDiv = document.createElement('span');
             tempDiv.innerHTML = text;
-            node.parentNode.replaceChild(tempDiv.firstChild, node);
+            node.parentNode.replaceChild(tempDiv, node);
           }
         });
       }
@@ -543,24 +544,27 @@
         });
       }
 
-      // Make containers float
+      // IMPROVED Make containers float - works with React
       function makeContainersFloat() {
-        // Find common container elements and add floating classes
-        const containers = document.querySelectorAll('div, section, article, .container, .card, .box');
+        const containers = document.querySelectorAll('#root div, #root section, #root article');
         containers.forEach(container => {
-          if (container.offsetWidth < 600 && container.offsetHeight > 50) {
+          if (container.children.length > 0 && container.offsetWidth > 100 && 
+              container.offsetHeight > 50 && !container.classList.contains('floating-container')) {
             container.classList.add('floating-container');
           }
         });
       }
 
-      // Fix Colombia image
+      // IMPROVED Colombia image fix
       function fixColombiaImage() {
         const images = document.querySelectorAll('img');
         images.forEach(img => {
-          if (img.src.includes('colombia') || img.alt.toLowerCase().includes('colombia')) {
-            // Replace with a working Colombia image
-            img.src = 'https://images.unsplash.com/photo-1580730140079-67bfa43e2c2e?w=400&h=300&fit=crop';
+          const imgSrc = img.src.toLowerCase();
+          const imgAlt = img.alt.toLowerCase();
+          
+          if (imgSrc.includes('colombia') || imgAlt.includes('colombia') || 
+              imgSrc.includes('flag') && imgAlt.includes('colombia')) {
+            img.src = 'https://images.unsplash.com/photo-1516439664584-53c1e51ff6af?w=400&h=300&fit=crop';
             img.alt = 'Colombia landscape';
             img.classList.add('country-image');
           }
@@ -573,41 +577,23 @@
         showLGPDBanner();
         initializeCookies();
         
-        // Wait a bit for React content to load, then apply all fixes
-        setTimeout(() => {
-          convertNumbersToCounters();
-          makeContainersFloat();
-          fixColombiaImage();
-          
-          // Initialize stats when they become visible
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                initializeStats();
-              }
-            });
-          }, { threshold: 0.3 });
-          
-          // Observe all stat containers and counters
-          document.querySelectorAll('.stat-container, .stat-counter').forEach(element => {
-            observer.observe(element);
-          });
-        }, 1000); // Wait 1 second for React to render
+        // Check repeatedly for React content
+        const checkReactContent = setInterval(() => {
+          if (document.querySelector('#root')?.children.length > 0) {
+            convertNumbersToCounters();
+            makeContainersFloat();
+            fixColombiaImage();
+            initializeStats();
+          }
+        }, 1000);
+
+        // Stop checking after 10 seconds
+        setTimeout(() => clearInterval(checkReactContent), 10000);
       });
 
-      // Close modals when clicking overlay
       document.getElementById('modal-overlay').addEventListener('click', function() {
         closeCookieSettings();
         closePrivacyPolicy();
-      });
-
-      // Also check for numbers when user interacts with the page
-      document.addEventListener('click', function() {
-        setTimeout(() => {
-          convertNumbersToCounters();
-          makeContainersFloat();
-        }, 500);
       });
     </script>
   </body>
