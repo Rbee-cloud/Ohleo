@@ -245,81 +245,87 @@
         text-transform: uppercase;
         letter-spacing: 1px;
       }
+
+      /* Auto-detect and style numbers on the page */
+      .number-stat {
+        font-weight: bold;
+        color: #1a3c34;
+      }
     </style>
   </head>
   <body>
     <div id="root"></div>
 
-    <!-- Modern LGPD Cookie Consent Banner -->
+    <!-- Modern Cookie Consent Banner - ENGLISH -->
     <div id="lgpd-banner" class="lgpd-banner">
       <div class="lgpd-content">
         <p class="lgpd-text">
-          🍪 Usamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa 
-          <a href="#" onclick="showPrivacyPolicy()" class="lgpd-link">Política de Privacidade</a>.
+          🍪 We use cookies to enhance your experience. By continuing to browse, you agree to our 
+          <a href="#" onclick="showPrivacyPolicy()" class="lgpd-link">Privacy Policy</a>.
         </p>
         <div class="lgpd-buttons">
-          <button onclick="acceptAllCookies()" class="lgpd-btn accept">Aceitar Todos</button>
-          <button onclick="showCookieSettings()" class="lgpd-btn settings">Personalizar</button>
-          <button onclick="rejectAllCookies()" class="lgpd-btn reject">Recusar</button>
+          <button onclick="acceptAllCookies()" class="lgpd-btn accept">Accept All</button>
+          <button onclick="showCookieSettings()" class="lgpd-btn settings">Customize</button>
+          <button onclick="rejectAllCookies()" class="lgpd-btn reject">Reject</button>
         </div>
       </div>
     </div>
 
-    <!-- Modern Cookie Settings Modal -->
+    <!-- Modern Cookie Settings Modal - ENGLISH -->
     <div id="cookie-settings" class="lgpd-modal">
-      <h3 class="modal-title">Preferências de Cookies</h3>
+      <h3 class="modal-title">Cookie Preferences</h3>
       <div>
         <label class="cookie-option">
           <input type="checkbox" id="necessary-cookies" checked disabled>
-          <span class="cookie-label">Cookies Essenciais</span>
-          <span class="cookie-desc">Necessários para o funcionamento básico do site</span>
+          <span class="cookie-label">Essential Cookies</span>
+          <span class="cookie-desc">Required for basic website functionality</span>
         </label>
         <label class="cookie-option">
           <input type="checkbox" id="analytics-cookies">
-          <span class="cookie-label">Cookies Analíticos</span>
-          <span class="cookie-desc">Nos ajudam a entender como você usa nosso site</span>
+          <span class="cookie-label">Analytics Cookies</span>
+          <span class="cookie-desc">Help us understand how you use our site</span>
         </label>
         <label class="cookie-option">
           <input type="checkbox" id="marketing-cookies">
-          <span class="cookie-label">Cookies de Marketing</span>
-          <span class="cookie-desc">Personalizam sua experiência e conteúdo</span>
+          <span class="cookie-label">Marketing Cookies</span>
+          <span class="cookie-desc">Personalize your experience and content</span>
         </label>
       </div>
       <div class="modal-buttons">
-        <button onclick="saveCookieSettings()" class="modal-btn primary">Salvar Preferências</button>
-        <button onclick="closeCookieSettings()" class="modal-btn secondary">Fechar</button>
+        <button onclick="saveCookieSettings()" class="modal-btn primary">Save Preferences</button>
+        <button onclick="closeCookieSettings()" class="modal-btn secondary">Close</button>
       </div>
     </div>
 
-    <!-- Modern Privacy Policy Modal -->
+    <!-- Modern Privacy Policy Modal - ENGLISH -->
     <div id="privacy-policy" class="lgpd-modal" style="max-width: 600px;">
-      <h3 class="modal-title">Política de Privacidade - LGPD</h3>
+      <h3 class="modal-title">Privacy Policy - GDPR/LGPD Compliant</h3>
       <div style="text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
-        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">1. Coleta de Dados</h4>
-        <p style="margin-bottom: 15px; line-height: 1.6;">Coletamos apenas dados necessários para o funcionamento do site e melhorar sua experiência, sempre em conformidade com a Lei Geral de Proteção de Dados.</p>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">1. Data Collection</h4>
+        <p style="margin-bottom: 15px; line-height: 1.6;">We collect only necessary data for website functionality and to improve your experience, always in compliance with GDPR and LGPD regulations.</p>
         
-        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">2. Uso de Cookies</h4>
-        <p style="margin-bottom: 10px;">Utilizamos cookies para:</p>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">2. Cookie Usage</h4>
+        <p style="margin-bottom: 10px;">We use cookies for:</p>
         <ul style="margin-bottom: 15px; padding-left: 20px;">
-          <li style="margin-bottom: 5px;">Funcionalidade básica do site (necessários)</li>
-          <li style="margin-bottom: 5px;">Análise de tráfego (analíticos)</li>
-          <li style="margin-bottom: 5px;">Personalização de conteúdo (marketing)</li>
+          <li style="margin-bottom: 5px;">Basic website functionality (essential)</li>
+          <li style="margin-bottom: 5px;">Traffic analysis (analytical)</li>
+          <li style="margin-bottom: 5px;">Content personalization (marketing)</li>
         </ul>
         
-        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">3. Seus Direitos</h4>
-        <p style="margin-bottom: 10px;">Você tem o direito de:</p>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">3. Your Rights</h4>
+        <p style="margin-bottom: 10px;">You have the right to:</p>
         <ul style="margin-bottom: 15px; padding-left: 20px;">
-          <li style="margin-bottom: 5px;">Acessar seus dados pessoais</li>
-          <li style="margin-bottom: 5px;">Corrigir dados incorretos</li>
-          <li style="margin-bottom: 5px;">Excluir seus dados</li>
-          <li style="margin-bottom: 5px;">Revogar consentimento</li>
+          <li style="margin-bottom: 5px;">Access your personal data</li>
+          <li style="margin-bottom: 5px;">Correct inaccurate data</li>
+          <li style="margin-bottom: 5px;">Delete your data</li>
+          <li style="margin-bottom: 5px;">Withdraw consent</li>
         </ul>
         
-        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">4. Contato</h4>
-        <p>Para exercer seus direitos, entre em contato: <a href="mailto:privacy@leocyte.com" style="color: #4CAF50;">privacy@leocyte.com</a></p>
+        <h4 style="color: #1a3c34; margin: 20px 0 10px 0;">4. Contact</h4>
+        <p>To exercise your rights, contact us at: <a href="mailto:privacy@leocyte.com" style="color: #4CAF50;">privacy@leocyte.com</a></p>
       </div>
       <div class="modal-buttons">
-        <button onclick="closePrivacyPolicy()" class="modal-btn secondary">Fechar</button>
+        <button onclick="closePrivacyPolicy()" class="modal-btn secondary">Close</button>
       </div>
     </div>
 
@@ -431,6 +437,56 @@
         }, 16);
       }
 
+      // Auto-detect and convert numbers to animated counters
+      function convertNumbersToCounters() {
+        // Common patterns for numbers in text
+        const numberPatterns = [
+          /\b\d+\+?\b/g, // Regular numbers like 25, 100+
+          /\$\d+(?:,\d{3})*/g, // Currency like $50,000
+          /\b\d+(?:\.\d+)?%/g // Percentages like 95%
+        ];
+
+        // Walk through all text nodes in the document
+        const walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          null,
+          false
+        );
+
+        let node;
+        const nodesToProcess = [];
+
+        while (node = walker.nextNode()) {
+          if (node.textContent.trim().length > 0) {
+            nodesToProcess.push(node);
+          }
+        }
+
+        nodesToProcess.forEach(node => {
+          let text = node.textContent;
+          let hasNumbers = false;
+
+          numberPatterns.forEach(pattern => {
+            text = text.replace(pattern, match => {
+              hasNumbers = true;
+              // Extract the numeric value
+              const numericValue = parseFloat(match.replace(/[^0-9.]/g, ''));
+              if (!isNaN(numericValue)) {
+                return `<span class="stat-counter" data-target="${numericValue}">0</span>${match.replace(numericValue.toString(), '')}`;
+              }
+              return match;
+            });
+          });
+
+          if (hasNumbers) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = text;
+            node.parentNode.replaceChild(tempDiv.firstChild, node);
+          }
+        });
+      }
+
       function initializeStats() {
         const stats = document.querySelectorAll('.stat-counter');
         stats.forEach(stat => {
@@ -447,26 +503,36 @@
         showLGPDBanner();
         initializeCookies();
         
-        // Initialize stats when they become visible
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              initializeStats();
-            }
+        // Wait a bit for React content to load, then convert numbers
+        setTimeout(() => {
+          convertNumbersToCounters();
+          
+          // Initialize stats when they become visible
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                initializeStats();
+              }
+            });
+          }, { threshold: 0.3 });
+          
+          // Observe all stat containers and counters
+          document.querySelectorAll('.stat-container, .stat-counter').forEach(element => {
+            observer.observe(element);
           });
-        }, { threshold: 0.3 });
-        
-        // Observe all stat containers
-        document.querySelectorAll('.stat-container').forEach(container => {
-          observer.observe(container);
-        });
+        }, 1000); // Wait 1 second for React to render
       });
 
       // Close modals when clicking overlay
       document.getElementById('modal-overlay').addEventListener('click', function() {
         closeCookieSettings();
         closePrivacyPolicy();
+      });
+
+      // Also check for numbers when user interacts with the page
+      document.addEventListener('click', function() {
+        setTimeout(convertNumbersToCounters, 500);
       });
     </script>
   </body>
